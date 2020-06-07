@@ -15,15 +15,18 @@ class Dashboard extends Component {
 		this.state = {
 			online: false,
 			quality: 20,
-			value: 10
+			volume: 10
 		};
 		this.handleChange = this.handleChange.bind(this);
-		// this.handleChange2 = this.handleChange2.bind(this);
+		this.handleChange2 = this.handleChange2.bind(this);
 		this.handleClick = this.handleClick.bind(this);
-		this.handleClick2 = this.handleClick2.bind(this);
+		// this.handleClick2 = this.handleClick2.bind(this);
 	}
-	handleChange = (event, value) => {
-		this.setState({ value });
+	handleChange = (event, volume) => {
+		this.setState({ volume });
+	};
+	handleChange2 = (event, quality) => {
+		this.setState({ quality });
 	};
 
 	handleClick = () => {
@@ -31,14 +34,15 @@ class Dashboard extends Component {
 			online: !this.state.online
 		});
 	};
-	handleClick2 = () => {
-		this.setState({
-			quality: this.state.value
-		});
-	};
+	// handleClick2 = () => {
+	// 	this.setState({
+	// 		quality: this.state.value
+	// 	});
+	// };
 
 	render() {
-		const { value } = this.state;
+		// debugger;
+		const { volume } = this.state;
 		const { quality } = this.state;
 		return (
 			<div className="App">
@@ -69,13 +73,13 @@ class Dashboard extends Component {
 							</Typography>
 							<CardActions>
 								<Slider
-									aria-labelledby="discrete-slider-small-steps"
+									defaultValue={10}
 									step={10}
 									marks
 									min={0}
 									max={100}
 									valueLabelDisplay="auto"
-									value={value}
+									volume={volume}
 									onChange={this.handleChange}
 								/>
 							</CardActions>
@@ -89,8 +93,7 @@ class Dashboard extends Component {
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<Select native value={quality} onChange={this.handleClick2}>
-								<option aria-label="None" value="" />
+							<Select native value={quality} onChange={this.handleChange2}>
 								<option value={10}>Low</option>
 								<option value={20}>Normal</option>
 								<option value={30}>High</option>
