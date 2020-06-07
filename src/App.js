@@ -39,33 +39,31 @@ class App extends Component {
 		} else {
 			return (
 				<div className="App">
-					<AppBar>
-						My Music App
-						<form>
-							<TextField
-								name="username"
-								type="text"
-								placeholder="Username"
-								value={this.state.username}
-								onChange={this.handleChange}
-							/>
+					<AppBar style={{ height: "10%" }}>My Music App</AppBar>
+					<form style={{ marginTop: "15%" }}>
+						<TextField
+							name="username"
+							type="text"
+							placeholder="Username"
+							value={this.state.username}
+							onChange={this.handleChange}
+						/>
 
-							<TextField
-								placeholder="Password"
-								name="password"
-								type="text"
-								value={this.state.password}
-								onChange={this.handleChange}
-							/>
-						</form>
-						<Button
-							variant="contained"
-							color="primary"
-							onClick={this.handleSubmit}
-						>
-							Primary
-						</Button>
-					</AppBar>
+						<TextField
+							placeholder="Password"
+							name="password"
+							type="text"
+							value={this.state.password}
+							onChange={this.handleChange}
+						/>
+					</form>
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={this.handleSubmit}
+					>
+						Primary
+					</Button>
 				</div>
 			);
 		}
