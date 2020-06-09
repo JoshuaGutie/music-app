@@ -25,8 +25,9 @@ class Dashboard extends Component {
 	handleChange = (event, volume) => {
 		this.setState({ volume });
 	};
-	handleChange2 = (event, quality) => {
-		this.setState({ quality });
+	handleChange2 = (event) => {
+		this.setState({ quality: event.target.value });
+		console.log(event.target.value);
 	};
 
 	handleClick = () => {
