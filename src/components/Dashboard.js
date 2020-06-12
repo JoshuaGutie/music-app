@@ -9,6 +9,16 @@ import Slider from "@material-ui/core/Slider";
 import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 
+const popUp = [
+	"Your application is offline. You wont be able to share or stream music to other devices.",
+  ];
+  const popUp2 = [
+	  "Listening to music at a high volume could cause long-term hearing loss.",
+	];
+	const popUp3 = [
+	  "Music quality is degraded. Increase quality if your connection allows it.",
+	];
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -28,15 +38,29 @@ class Dashboard extends Component {
   // 			 'Music quality is degraded. Increase quality if your connection allows it.']
 
   componentDidUpdate(prevProps, prevState) {
-    let popUp = [
-      "Your application is offline. You wont be able to share or stream music to other devices.",
-    ];
-    if (prevState.online == true) {
+    
+	if (this.state.online !== prevState.online){
       console.log("Online has changed!!!", this.state.online);
-      console.log(this.state.notifications);
-      this.state.notifications = popUp;
-    }
+	  console.log(this.state.notifications);
+	//   this.setState({
+	// 	notifications: [this.state.notifications, popUp],
+	//   });
+	
+		if (this.state.online = false){
+		this.state.notification = popUp} else{
+		this.state.notification = ''}
+	}if (prevState.volume > 80) {
+		console.log("volume has changed!!!", this.state.volume);
+		console.log("VOLUME",this.state.notifications);
+		// this.setState({
+		// 	notifications: [this.state.notifications, popUp2],
+		//   });
+		this.state.notifications = popUp2;
+	  }
   }
+
+
+  
 
   handleChange = (event, volume) => {
     this.setState({ volume });
@@ -119,6 +143,9 @@ class Dashboard extends Component {
           </Card>
           <div>
             <h1>System notifications:</h1>
+			{this.state.notifications.map((notifications, index) => (
+          <div key={index}>{notifications}</div>
+        ))}
           </div>
         </div>
       </div>
