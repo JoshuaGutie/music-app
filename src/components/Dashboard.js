@@ -39,23 +39,21 @@ class Dashboard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     
-	if (this.state.online !== prevState.online){
+	if (prevState.online == true) {
       console.log("Online has changed!!!", this.state.online);
 	  console.log(this.state.notifications);
-	//   this.setState({
-	// 	notifications: [this.state.notifications, popUp],
-	//   });
-	
-		if (this.state.online = false){
-		this.state.notification = popUp} else{
-		this.state.notification = ''}
-	}if (prevState.volume > 80) {
+	  this.setState({
+		notifications: [...this.state.notifications, popUp],
+	  });
+
+      //this.state.notifications = popUp;
+	}else if (prevState.volume > 80) {
 		console.log("volume has changed!!!", this.state.volume);
 		console.log("VOLUME",this.state.notifications);
-		// this.setState({
-		// 	notifications: [this.state.notifications, popUp2],
-		//   });
-		this.state.notifications = popUp2;
+		this.setState({
+			notifications: [this.state.notifications, popUp2],
+		  });
+		//this.state.notifications = popUp2;
 	  }
   }
 
