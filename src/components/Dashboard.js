@@ -37,25 +37,24 @@ class Dashboard extends Component {
   // 			 'Listening to music at a high volume could cause long-term hearing loss.',
   // 			 'Music quality is degraded. Increase quality if your connection allows it.']
 
-  componentDidUpdate(prevProps, prevState) {
-    
-	if (prevState.online == true) {
-      console.log("Online has changed!!!", this.state.online);
-	  console.log(this.state.notifications);
-	  this.setState({
-		notifications: [...this.state.notifications, popUp],
-	  });
-
-      //this.state.notifications = popUp;
-	}else if (prevState.volume > 80) {
-		console.log("volume has changed!!!", this.state.volume);
-		console.log("VOLUME",this.state.notifications);
-		this.setState({
-			notifications: [this.state.notifications, popUp2],
-		  });
-		//this.state.notifications = popUp2;
-	  }
-  }
+  onlineStatus = (e) => {
+	let onlineStatus = !this.state.online;
+	this.setState({
+	online: onlineStatus
+	});
+	console.log(this.state.online);
+	if (onlineStatus) {
+	this.setState({
+	notifications: this.state.notifications.filter(
+	(notification) => notification !== popUp
+	)
+	});
+	} else {
+	this.setState({
+	notifications: [...this.state.notifications, popUp]
+	});
+	}
+	};
 
 
   
