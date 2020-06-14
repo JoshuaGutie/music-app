@@ -21,11 +21,7 @@ class Dashboard extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChange2 = this.handleChange2.bind(this);
 		this.handleClick = this.handleClick.bind(this);
-		// this.handleClick2 = this.handleClick2.bind(this);
 	}
-	// let popUp = ['Your application is offline. You wont be able to share or stream music to other devices.',
-	// 			 'Listening to music at a high volume could cause long-term hearing loss.',
-	// 			 'Music quality is degraded. Increase quality if your connection allows it.']
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevState.online && !this.state.online) {
@@ -43,7 +39,7 @@ class Dashboard extends Component {
 				"Listening to music at a high volume could cause long-term hearing loss.";
 			console.log("VOLUME", this.state.notifications);
 			this.setState({
-				notifications: [this.state.notifications, volumeNote]
+				notifications: [...this.state.notifications, volumeNote]
 			});
 		}
 
@@ -70,11 +66,6 @@ class Dashboard extends Component {
 			online: !this.state.online
 		});
 	};
-	// handleClick2 = () => {
-	// 	this.setState({
-	// 		quality: this.state.value
-	// 	});
-	// };
 
 	render() {
 		// debugger;
@@ -83,63 +74,67 @@ class Dashboard extends Component {
 		return (
 			<div className="App">
 				<AppBar style={{ height: "10%" }}>My Music App </AppBar>
-				<br />
-				<h1>WELCOME USER</h1>
-				<div style={{ display: "flex" }}>
-					<Card variant="elevation">
-						<CardContent>
-							<h2>Online Mode</h2>
+				<div>
+					<h2 style={{ marginTop: "5%", textAlign: "start" }}>Welcome User</h2>
+					<div className="canvass" style={{ display: "flex" }}>
+						<Card className="card" variant="elevation">
+							<CardContent>
+								<h2>Online Mode</h2>
 
-							<Typography variant="body2" component="p">
-								Is this application connected to the internet?
-							</Typography>
+								<Typography variant="body2" component="p">
+									Is this application connected to the internet?
+								</Typography>
+								<CardActions>
+									<Switch onClick={this.handleClick} />
+									{this.state.online ? true : false}
+								</CardActions>
+							</CardContent>
+						</Card>
+
+						<Card className="card" variant="elevation">
+							<CardContent>
+								<h2>Master Volume</h2>
+
+								<Typography variant="body2" component="p">
+									Overrides all other sound settings in this application.
+								</Typography>
+								<CardActions>
+									<Slider
+										defaultValue={10}
+										step={10}
+										marks
+										min={0}
+										max={100}
+										valueLabelDisplay="auto"
+										volume={volume}
+										onChange={this.handleChange}
+									/>
+								</CardActions>
+							</CardContent>
+						</Card>
+						<Card className="card" variant="elevation">
+							<CardContent>
+								<h3>Sound Quality</h3>
+								<Typography variant="body2" component="p">
+									Manually control the music quality in event of poor
+									connection.
+								</Typography>
+							</CardContent>
 							<CardActions>
-								<Switch onClick={this.handleClick} />
-								{this.state.online ? true : false}
+								<Select native value={quality} onChange={this.handleChange2}>
+									<option value={10}>Low</option>
+									<option value={20}>Normal</option>
+									<option value={30}>High</option>
+								</Select>
 							</CardActions>
-						</CardContent>
-					</Card>
-
-					<Card variant="elevation">
-						<CardContent>
-							<h2>Master Volume</h2>
-
-							<Typography variant="body2" component="p">
-								Overrides all other sound settings in this application.
-							</Typography>
-							<CardActions>
-								<Slider
-									defaultValue={10}
-									step={10}
-									marks
-									min={0}
-									max={100}
-									valueLabelDisplay="auto"
-									volume={volume}
-									onChange={this.handleChange}
-								/>
-							</CardActions>
-						</CardContent>
-					</Card>
-					<Card variant="elevation">
-						<CardContent>
-							<h2>Sound Quality</h2>
-							<Typography variant="body2" component="p">
-								Manually control the music quality in event of poor connection.
-							</Typography>
-						</CardContent>
-						<CardActions>
-							<Select native value={quality} onChange={this.handleChange2}>
-								<option value={10}>Low</option>
-								<option value={20}>Normal</option>
-								<option value={30}>High</option>
-							</Select>
-						</CardActions>
-					</Card>
-					<div>
-						<h1>System Notifications:</h1>
+						</Card>
+					</div>
+					<div className="card1">
+						<h3> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
-							<div key={index}>{notifications}</div>
+							<div style={{ display: "flex" }} key={index}>
+								{notifications}
+							</div>
 						))}
 					</div>
 				</div>
