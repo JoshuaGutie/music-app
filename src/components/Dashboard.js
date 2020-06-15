@@ -43,7 +43,7 @@ class Dashboard extends Component {
 			});
 		}
 
-		if (prevState.quality > 20 && this.state.quality === 10) {
+		if (prevState.quality > 11 && this.state.quality == 10) {
 			const qualityNote =
 				"Music quality is degraded. Increase quality if your connection allows it.";
 			console.log("QUALITY", this.state.notifications);
@@ -141,7 +141,7 @@ class Dashboard extends Component {
 						<h3 style={{ marginTop: "10%", textAlign: "center" }}> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
 							<div className = "notifs" style={{border: "2px solid black",
-							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "auto", width: "400px", height:"100px"}} 
+							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "auto", width: "600px", height:"70px"}} 
 							
 							key={index}>
 								<button onClick={this.handleDelete(index)}
