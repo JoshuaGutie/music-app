@@ -141,7 +141,7 @@ class Dashboard extends Component {
 						<h3 style={{ marginTop: "10%", textAlign: "center" }}> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
 							<div className = "notifs" style={{border: "2px solid black",
-							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "auto", width: "600px", height:"70px"}} 
+							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "auto", width: "600px", height:"auto", marginBottom: "5px", paddingBottom: "5px"}} 
 							
 							key={index}>
 								<button onClick={this.handleDelete(index)}
