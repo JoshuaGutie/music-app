@@ -19,14 +19,13 @@
 }
 
 .notifs {
-	transition: 0.5s;
+	transition: 0.3s;
 	color: rgb(19, 15, 87);
   }
   
   .notifs:hover {
   
 	transform-origin: top left;
-	transform: scale(1.1);
-	margin-right: 10px;
+	transform: scale(1.05);
 	color: rgb(39, 39, 156);
   }

@@ -141,7 +141,7 @@ class Dashboard extends Component {
 						<h3> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
 							<div className = "notifs" style={{ display: "flex", border: "2px solid black",
-							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "15px"}} 
+							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "17px"}} 
 							
 							key={index}>
 								<p>ERROR:</p>
