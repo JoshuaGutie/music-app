@@ -43,10 +43,10 @@ class Dashboard extends Component {
 			});
 		}
 
-		if (prevState.quality >= 20 && this.state.volume === 10) {
+		if (prevState.quality > 20 && this.state.quality === 10) {
 			const qualityNote =
 				"Music quality is degraded. Increase quality if your connection allows it.";
-			console.log("VOLUME", this.state.notifications);
+			console.log("QUALITY", this.state.notifications);
 			this.setState({
 				notifications: [...this.state.notifications, qualityNote]
 			});
@@ -83,7 +83,7 @@ class Dashboard extends Component {
 			<div className="App">
 				<AppBar style={{ height: "10%" }}>My Music App </AppBar>
 				<div>
-					<h2 style={{ marginTop: "10%", textAlign: "start" }}>Welcome User</h2>
+					<h2 style={{ marginTop: "10%", textAlign: "center" }}>Welcome User</h2>
 					<div className="canvass" style={{ display: "flex" }}>
 						<Card className="card" variant="elevation">
 							<CardContent>
@@ -137,17 +137,17 @@ class Dashboard extends Component {
 							</CardActions>
 						</Card>
 					</div>
-					<div className="card1">
-						<h3> System Notifications:</h3>
+					<div className="card1" style={{textAlign: "center", width: "100%"}}>
+						<h3 style={{ marginTop: "10%", textAlign: "center" }}> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
-							<div className = "notifs" style={{ display: "flex", border: "2px solid black",
-							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "17px"}} 
+							<div className = "notifs" style={{border: "2px solid black",
+							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "auto", width: "400px", height:"100px"}} 
 							
 							key={index}>
-								<p>ERROR:</p>
-								{notifications}
 								<button onClick={this.handleDelete(index)}
-								style={{ color: "black", margin: "none", padding:"none"}}>X</button>
+								style={{ color: "black", margin: "none", padding:"none", marginLeft: "94%"}}>X</button>
+								<p style = {{margin: "5px"}}>ERROR:</p>
+								{notifications}<br/>
 							</div>
 						))}
 					</div>
