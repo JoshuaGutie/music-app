@@ -66,6 +66,14 @@ class Dashboard extends Component {
 			online: !this.state.online
 		});
 	};
+	handleDelete = (index) => () => {
+		const deletedNotif = [...this.state.notifications];
+		deletedNotif.splice(index, 1);
+		this.setState({
+			notifications: deletedNotif
+		});
+	}
+
 
 	render() {
 		// debugger;
@@ -75,7 +83,7 @@ class Dashboard extends Component {
 			<div className="App">
 				<AppBar style={{ height: "10%" }}>My Music App </AppBar>
 				<div>
-					<h2 style={{ marginTop: "5%", textAlign: "start" }}>Welcome User</h2>
+					<h2 style={{ marginTop: "10%", textAlign: "start" }}>Welcome User</h2>
 					<div className="canvass" style={{ display: "flex" }}>
 						<Card className="card" variant="elevation">
 							<CardContent>
@@ -132,8 +140,14 @@ class Dashboard extends Component {
 					<div className="card1">
 						<h3> System Notifications:</h3>
 						{this.state.notifications.map((notifications, index) => (
-							<div style={{ display: "flex" }} key={index}>
+							<div className = "notifs" style={{ display: "flex", border: "2px solid black",
+							borderRadius: "5px", backgroundColor: "#CF302B", color: "white", margin: "15px"}} 
+							
+							key={index}>
+								<p>ERROR:</p>
 								{notifications}
+								<button onClick={this.handleDelete(index)}
+								style={{ color: "black", margin: "none", padding:"none"}}>X</button>
 							</div>
 						))}
 					</div>

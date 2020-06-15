@@ -17,3 +17,16 @@
 	width: 400px;
 	margin-right: 40px;
 }
+
+.notifs {
+	transition: 0.5s;
+	color: rgb(19, 15, 87);
+  }
+  
+  .notifs:hover {
+  
+	transform-origin: top left;
+	transform: scale(1.1);
+	margin-right: 10px;
+	color: rgb(39, 39, 156);
+  }
